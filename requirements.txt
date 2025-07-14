@@ -3,3 +3,5 @@ python-multipart==0.0.6
 httpx==0.25.0
 uvicorn==0.24.0
 python-docx==1.1.0
+xmltodict==0.13.0
+dicttoxml==1.7.16
