@@ -1,5 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import Response
+import xmltodict
+import dicttoxml
 import zipfile
 import io
 import xml.etree.ElementTree as ET
@@ -283,6 +285,15 @@ async def convert_docx(file: UploadFile = File(...)):
     except Exception as e:
         logger.error(f"Unexpected error in convert_docx: {e}")
         raise HTTPException(status_code=500, detail=f"Internal server error: {e}")
+
+@app.post("/json-to-xml-file")
+async def convert(request: Request):
+    data = await request.json()
+    xml = dicttoxml.dicttoxml(data, attr_type=False, custom_root='root')
+    return Response(content=xml, media_type='application/xml', headers={
+        "Content-Disposition": "attachment; filename=output.xml"
+    })
+
 
 @app.get("/")
 async def root():
