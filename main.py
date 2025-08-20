@@ -6,6 +6,10 @@ import io
 
 app = FastAPI()
 
+@app.get("/health")
+def health():
+    return {"status": "ok", "message": "API is healthy 🚀"}
+
 class DocxData(BaseModel):
     date: str | None = None
     defendant: str | None = None
@@ -68,3 +72,4 @@ def generate_docx(data: DocxData):
         ),
         headers=headers
     )
+
