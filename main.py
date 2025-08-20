@@ -2,6 +2,7 @@ from fastapi import FastAPI, Response
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from docxtpl import DocxTemplate, RichText
+import uvicorn
 import io
 
 app = FastAPI()
@@ -81,3 +82,4 @@ def generate_docx(data: DocxData):
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
+
