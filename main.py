@@ -10,6 +10,10 @@ app = FastAPI()
 def health():
     return {"status": "ok", "message": "API is healthy 🚀"}
 
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "This is your root Endppoint!"}
+
 class DocxData(BaseModel):
     date: str | None = None
     defendant: str | None = None
@@ -73,3 +77,7 @@ def generate_docx(data: DocxData):
         headers=headers
     )
 
+
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
