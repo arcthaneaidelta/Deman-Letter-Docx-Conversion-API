@@ -1,4 +1,5 @@
 fastapi
 uvicorn
-python-docx-template
+docxtpl
+jinja2
 python-multipart
