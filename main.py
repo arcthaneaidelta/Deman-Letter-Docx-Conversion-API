@@ -62,6 +62,7 @@ async def root():
     return {"message": "Demand Letter API is running. Use POST /generate-letter with JSON data."}
 
 
-if __name__ == "__main__":
-    # For local testing
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+# if __name__ == "__main__":
+#     # For local testing
+#     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+
