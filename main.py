@@ -24,7 +24,7 @@ class DemandLetterData(BaseModel):
     end_date: str
     paragraphs_concerning_wrongful_termination: str
     paragraphs_concerning_labor_code_violations: str
-    Delete_a_or_b: str
+    delete_a_or_b: str
     damages_formatted: str
     conclusion: str
     company_name: str
@@ -72,5 +72,6 @@ async def root():
 if __name__ == "__main__":
     # For local testing
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+
 
 
