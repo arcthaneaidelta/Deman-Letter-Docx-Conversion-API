@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from docxtpl import DocxTemplate
@@ -31,7 +32,13 @@ class DemandLetterData(BaseModel):
 
 
 app = FastAPI(title="Demand Letter Generator API")
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"], 
+)
 
 @app.post("/generate-letter")
 async def generate_letter(data: DemandLetterData):
@@ -62,7 +69,8 @@ async def root():
     return {"message": "Demand Letter API is running. Use POST /generate-letter with JSON data."}
 
 
-# if __name__ == "__main__":
-#     # For local testing
-#     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+if __name__ == "__main__":
+    # For local testing
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+
 
