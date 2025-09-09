@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel
-from docxtpl import DocxTemplate
+from docxtpl import DocxTemplate 
 from jinja2 import Environment, StrictUndefined
 import uvicorn
 import os
@@ -110,3 +110,4 @@ if __name__ == "__main__":
         port=port,
         reload=False  
     )
+
